@@ -6,7 +6,7 @@
     background: var(--code-bg);
     border-radius: .5rem;
     font-size: 0.875em;
-    font-family: Consolas, sans-serif;
+    /* font-family: Consolas, sans-serif; */
     color: var(--pe-primary-hover-color);
 }
 
@@ -15,7 +15,7 @@
     border-radius: var(--radius);
     margin: var(--content-gap) auto;
     background-color: var(--pe-code-block-header-bg-color);
-    font-family: Consolas, sans-serif;
+    /* font-family: Consolas, sans-serif; */
     overflow: hidden;
 }
 
