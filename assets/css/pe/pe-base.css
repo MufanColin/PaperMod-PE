@@ -11,9 +11,9 @@
     --pe-primary-2: #223051;
     --pe-primary-hover-color: var(--pe-primary);
     /* 主题色 (background) */
-    --pe-btn-bg-color: var(--pe-primary-2);
+    --pe-btn-bg-color: rgb(255, 255, 255);
     /* 按钮字体颜色 */
-    --pe-btn-font-color: #fff;
+    --pe-btn-font-color: rgb(30, 30, 1);
     /* 文章标识 - 置顶 */
     --pe-post-top-color: rgb(205, 32, 31);
     /* 文章标识 - 转载 */
