@@ -33,6 +33,12 @@
         <h1>{{ .title | default site.Title | markdownify }}</h1>
         <span id="pe-subtitle">{{ .subtitle | markdownify }}</span>
         {{ if site.Params.enableTypeIt }}
+        <style>
+            /* Customize the cursor style */
+            #pe-subtitle .ti-cursor {
+                font-size: calc(var(--ti-cursor-font-size, 1em) * 1.2); /* Adjust the font size to change the cursor height */
+            }
+        </style>
         <script>
             new TypeIt("#pe-subtitle", {
                 speed: 50,
