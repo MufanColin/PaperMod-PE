@@ -16,9 +16,16 @@
                 {{- range $moment := $paginator.Pages }}
                 {{- if .Content }}
                 <li class="pe-moment">
+                    {{- $img := resources.Get site.Params.label.icon }}
+                    {{- if $img }}
                     <div class="pe-moment-header">
-                        <img src="{{ site.Params.label.icon }}" alt="{{ site.Params.author }}" class="pe-moment-profile">
+                        <img src="{{ $img.Permalink }}" alt="{{ site.Params.author }}" class="pe-moment-profile">
                     </div>
+                    {{- else }}
+                    <div class="pe-moment-header">
+                        <img src="{{- site.Params.label.icon | absURL -}}" alt="{{ site.Params.author }}" class="pe-moment-profile">
+                    </div>
+                    {{- end }}
                     <div class="pe-moment-body">
                         {{ if .Params.expired }}
                         <div class="pe-stamp">
