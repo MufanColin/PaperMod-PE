@@ -121,13 +121,13 @@
 .toc details summary {
     margin-inline-start: 2rem;
     padding: 1.2rem 0;
-    width: 11rem;
+    width: 16rem;
     cursor: pointer;
 }
 
 .toc details[open] summary {
     font-weight: 500;
-    width: 11rem;
+    width: 16rem;
     cursor: pointer;
 }
 
