@@ -62,11 +62,63 @@ $page := $paginator.Pages }} {{- $class := "post-entry" }} {{- $user_preferred
 {{- if gt $paginator.TotalPages 1 }}
 <footer class="page-footer">
     <nav class="pagination">
+        <!-- First page link -->
+        {{- if gt $paginator.PageNumber 1 }}
+        <a class="pageFirst" href="{{ $paginator.First.URL | absURL }}">First</a>
+        {{- end }}
+
+        <!-- Previous page link -->
+        {{- if $paginator.HasPrev }}
+        <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">‹ Prev</a>
+        {{- end }}
+
+        <!-- Calculate start and end for page window -->
+        {{- $start := 1 }}
+        {{- $end := $paginator.TotalPages }}
+        
+        {{- if ge $paginator.PageNumber 3 }}
+            {{- $start = sub $paginator.PageNumber 2 }}
+        {{- end }}
+        
+        {{- if lt (add $paginator.PageNumber 2) $paginator.TotalPages }}
+            {{- $end = add $paginator.PageNumber 2 }}
+        {{- end }}
+
+        <!-- Adjust to ensure a minimum of 5 pages in the window when possible -->
+        {{- if lt (sub $end $start) 4 }}
+            {{- if eq $start 1 }}
+                {{- $end = cond (lt 5 $paginator.TotalPages) 5 $paginator.TotalPages }}
+            {{- else }}
+                {{- $start = cond (gt $paginator.TotalPages 5) (sub $paginator.TotalPages 4) 1 }}
+            {{- end }}
+        {{- end }}
+
+        <!-- Page numbers with absolute URLs -->
+        {{- range $i := seq $start $end }}
+        <a class="pageNum {{ if eq $i $paginator.PageNumber }}current{{ end }}" href="{{ $paginator.First.URL | absURL }}/page/{{ $i }}">{{ $i }}</a>
+        {{- end }}
+
+        <!-- Next page link -->
+        {{- if $paginator.HasNext }}
+        <a class="next" href="{{ $paginator.Next.URL | absURL }}">Next ›</a>
+        {{- end }}
+
+        <!-- Last page link -->
+        {{- if lt $paginator.PageNumber $paginator.TotalPages }}
+        <a class="pageLast" href="{{ $paginator.Last.URL | absURL }}">Last</a>
+        {{- end }}
+    </nav>
+</footer>
+{{- end }}
+
+<!-- {{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+    <nav class="pagination"> -->
         <!--    {{- if $paginator.HasPrev }}-->
         <!--    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">{{ i18n "prev_page" }}</a>-->
         <!--    {{- end }}-->
 
-        {{- if not (eq $paginator.PageNumber 1) }}
+        <!-- {{- if not (eq $paginator.PageNumber 1) }}
         <span class="numFirst">
             <a class="pageFirst" href="{{ $paginator.First.URL | absURL }}">{{ "1" }}</a>
         </span>
@@ -89,14 +141,14 @@ $page := $paginator.Pages }} {{- $class := "post-entry" }} {{- $user_preferred
         <span class="numLast">
             <a class="pageLast" href="{{ $paginator.Last.URL | absURL }}">{{ $paginator.TotalPages }}</a>
         </span>
-        {{- end }}
+        {{- end }} -->
 
         <!--    {{- if $paginator.HasNext }}-->
         <!--    <a class="next" href="{{ $paginator.Last.URL | absURL }}">{{ i18n "next_page" }}</a>-->
         <!--    {{- end }}-->
-    </nav>
+    <!-- </nav>
 </footer>
-{{- end }}
+{{- end }} -->
 
 <br />
 
