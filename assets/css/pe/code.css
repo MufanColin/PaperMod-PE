@@ -118,7 +118,8 @@ table.lntable {
 }
 
 .pe-code-details i.pe-code-details-icon {
-    color: var(--content);
+    /* color: var(--content); */
+    color: rgba(196, 196, 197, 0.8);
     -webkit-transition: transform 0.2s ease;
     -moz-transition: transform 0.2s ease;
     -o-transition: transform 0.2s ease;
@@ -126,7 +127,8 @@ table.lntable {
 }
 
 .dark .pe-code-details i.pe-code-details-icon {
-    color: var(--content);
+    /* color: var(--content); */
+    color: rgba(196, 196, 197, 0.8);
 }
 
 .pe-code-details .pe-code-details-content {
@@ -180,6 +182,10 @@ table.lntable {
 
 .pe-code-details.open .pe-code-copy-button {
     display: inherit;
+}
+
+.pe-code-copy-button {
+    color: rgba(196, 196, 197, 0.8);
 }
 
 .pe-code-copy-button:hover {
